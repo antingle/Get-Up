@@ -24,13 +24,16 @@ struct ContentView: View {
                         .padding([.top, .leading, .trailing])
                         .transition(.move(edge: .bottom))
                 }
-            } .navigationBarTitle("Get Up") .navigationBarItems(trailing: Button("Add", action: { self.cards.append(Card(name: String(cards.count))) }))
+            }
+            .navigationBarTitle("Get Up")
+            .navigationBarItems(trailing: Button("Add", action: { self.cards.append(Card(name: String(cards.count))) }))
+            .background(Image("bg") .resizable() .scaledToFill() .ignoresSafeArea())
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().preferredColorScheme(.dark)
     }
 }
