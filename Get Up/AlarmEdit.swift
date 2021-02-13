@@ -1,5 +1,5 @@
 //
-//  AlarmCard.swift
+//  AlarmEdit.swift
 //  Get Up
 //
 //  Created by Anthony on 2/13/21.
@@ -7,44 +7,36 @@
 
 import SwiftUI
 
-enum Activity: String, CaseIterable, Identifiable {
-    case Puzzle
-    case Shake
-    case Math
-    case Match
-    var id: String { self.rawValue }
-}
-
-struct AlarmCard: View {
+struct AlarmEdit: View {
     
-    @State var alarmIsOn = true
-    @State var selectedActivity = Activity.Puzzle.rawValue
-    @State var wakeUp = Date()
-    @State var snooze = false
-    @State var currentSeconds = 3
-    @State var showDays = false
+    @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     
+    @Binding var alarmIsOn:Bool
+    @Binding var selectedActivity:String
+    @Binding var wakeUp:Date
+    @Binding var snooze:Bool
+    @Binding var currentSeconds:Int
+    @Binding var showDays:Bool
     
-    @State var sun = false
-    @State var mon = true
-    @State var tue = true
-    @State var wed = true
-    @State var thu = true
-    @State var fri = true
-    @State var sat = false
+    @Binding var sun:Bool
+    @Binding var mon:Bool
+    @Binding var tue:Bool
+    @Binding var wed:Bool
+    @Binding var thu:Bool
+    @Binding var fri:Bool
+    @Binding var sat:Bool
     
     
     var body: some View {
         VStack {
             VStack {
                 HStack {
-//                    //Wakeup Time
-//                    DatePicker(
-//                        "Wakeup Time",
-//                        selection: $wakeUp,
-//                        displayedComponents: [.hourAndMinute]) .labelsHidden()
-                    //5:00 am
-                    Text(wakeUp, style: .time).font(.system(size: 48, weight: .light)).foregroundColor(Color(#colorLiteral(red: 0.4, green: 0.4, blue: 0.4, alpha: 1))).multilineTextAlignment(.center) .layoutPriority(50)
+                    //Wakeup Time
+                    DatePicker(
+                        "Wakeup Time",
+                        selection: $wakeUp,
+                        displayedComponents: [.hourAndMinute]) .labelsHidden()
+//                    Text(wakeUp, style: .time).font(.system(size: 48, weight: .light)).foregroundColor(Color(#colorLiteral(red: 0.4, green: 0.4, blue: 0.4, alpha: 1))).multilineTextAlignment(.center) .layoutPriority(50)
                     
                     Toggle("", isOn: $alarmIsOn)
                         .toggleStyle(SwitchToggleStyle(tint: Color("ToggleColor")))
@@ -52,9 +44,8 @@ struct AlarmCard: View {
                 .padding([.top, .leading, .trailing])
                 VStack {
                     
-                    Button(action: { withAnimation { showDays.toggle() } }, label: {
-                        Text("M, T, W, Th, F")
-                    })
+                   
+                   
                     if showDays {
                         HStack {
                             Button(action: { sun.toggle() }, label: { Text("Sun") })
@@ -125,8 +116,4 @@ struct AlarmCard: View {
     }
 }
 
-struct AlarmCard_Previews: PreviewProvider {
-    static var previews: some View {
-        AlarmCard().preferredColorScheme(.dark)
-    }
-}
+
