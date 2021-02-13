@@ -13,6 +13,7 @@
 		9276B9BB25D8421B006FFD8F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9276B9BA25D8421B006FFD8F /* Preview Assets.xcassets */; };
 		9276B9C625D8421B006FFD8F /* Get_UpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9276B9C525D8421B006FFD8F /* Get_UpTests.swift */; };
 		9276B9D125D8421B006FFD8F /* Get_UpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9276B9D025D8421B006FFD8F /* Get_UpUITests.swift */; };
+		9276B9E225D84272006FFD8F /* AlarmCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9276B9E125D84272006FFD8F /* AlarmCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		9276B9CC25D8421B006FFD8F /* Get UpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Get UpUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9276B9D025D8421B006FFD8F /* Get_UpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Get_UpUITests.swift; sourceTree = "<group>"; };
 		9276B9D225D8421B006FFD8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9276B9E125D84272006FFD8F /* AlarmCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			children = (
 				9276B9B325D8421A006FFD8F /* Get_UpApp.swift */,
 				9276B9B525D8421A006FFD8F /* ContentView.swift */,
+				9276B9E125D84272006FFD8F /* AlarmCard.swift */,
 				9276B9B725D8421B006FFD8F /* Assets.xcassets */,
 				9276B9BC25D8421B006FFD8F /* Info.plist */,
 				9276B9B925D8421B006FFD8F /* Preview Content */,
@@ -261,6 +264,7 @@
 			files = (
 				9276B9B625D8421A006FFD8F /* ContentView.swift in Sources */,
 				9276B9B425D8421A006FFD8F /* Get_UpApp.swift in Sources */,
+				9276B9E225D84272006FFD8F /* AlarmCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

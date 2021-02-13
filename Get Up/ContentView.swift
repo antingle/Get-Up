@@ -7,10 +7,25 @@
 
 import SwiftUI
 
+struct Card: Identifiable {
+  let id = UUID()
+  let name: String
+}
+
 struct ContentView: View {
+    
+    @State private var cards: [Card] = [Card(name: "alarm")]
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            ScrollView {
+                ForEach(cards) { card in
+                    AlarmCard()
+                        .padding([.top, .leading, .trailing])
+                        .transition(.move(edge: .bottom))
+                }
+            } .navigationBarTitle("Get Up") .navigationBarItems(trailing: Button("Add", action: { self.cards.append(Card(name: String(cards.count))) }))
+        }
     }
 }
 
