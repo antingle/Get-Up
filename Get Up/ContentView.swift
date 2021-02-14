@@ -31,7 +31,7 @@ struct ContentView: View {
 //                }
             }
             .navigationBarTitle("Get Up")
-            .navigationBarItems(trailing: Button("Add", action: { self.cards.append(Alarm(id: UUID(), date: Date(), isOn: false, isSnooze: false)) }))
+            .navigationBarItems(trailing: Button("Add", action: { self.cards.append(Alarm(id: UUID(), date: Date(), isOn: false, isSnooze: false)) })).foregroundColor(.white)
             .background(Image("bg") .resizable() .scaledToFill() .ignoresSafeArea())
             
             

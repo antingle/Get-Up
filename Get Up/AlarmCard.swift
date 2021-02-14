@@ -44,17 +44,23 @@ struct AlarmCard: View {
             VStack {
                 HStack {
                     Button(action: { withAnimation {showTime.toggle()} }, label: {
-                        Text(alarm.date, style: .time).font(.system(size: 48, weight: .light)).foregroundColor(Color(#colorLiteral(red: 0.4, green: 0.4, blue: 0.4, alpha: 1))).multilineTextAlignment(.center) .layoutPriority(50)
-                    })
+                        Text(alarm.date, style: .time).font(.system(size: 48, weight: .light)).foregroundColor(showTime == true ? .blue : Color(#colorLiteral(red: 0.4, green: 0.4, blue: 0.4, alpha: 1))).multilineTextAlignment(.center) .layoutPriority(50)
+                    }) 
                     
                     Toggle("", isOn: $alarm.isOn)
                         .toggleStyle(SwitchToggleStyle(tint: Color("ToggleColor")))
-                        .fullScreenCover(isPresented: $alarm.isOn, content: {
+                        .onChange(of: alarm.isOn, perform: { value in
+                            if alarm.isOn && alarm.date <= now {
+                                presentAlarm = true
+                            }
+                        })
+                        .fullScreenCover(isPresented: $presentAlarm, content: {
                             VStack {
                             Text(alarm.date, style: .time).font(.system(size: 72, weight: .regular)).foregroundColor(Color(#colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1))).multilineTextAlignment(.center)
                             ShakeView()
                             } .ignoresSafeArea() .frame(width: 1000, height: 1000, alignment: .center).background(Color(.white)) // white background
                         })
+                        
                 }
                 .padding([.top, .leading, .trailing])
                 VStack {
@@ -64,7 +70,17 @@ struct AlarmCard: View {
                         "Wakeup Time",
                         selection: $alarm.date,
                         displayedComponents: [.hourAndMinute]).datePickerStyle(WheelDatePickerStyle()) .labelsHidden()
-                        .transition(.scale)
+                        .transition(.scale) .colorScheme(.light) .onChange(of: alarm.date, perform: { value in
+                            if value <= now && alarm.isOn {
+                                presentAlarm = true
+                            }
+                        })
+                        .fullScreenCover(isPresented: $presentAlarm, content: {
+                            VStack {
+                            Text(alarm.date, style: .time).font(.system(size: 72, weight: .regular)).foregroundColor(Color(#colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1))).multilineTextAlignment(.center)
+                            ShakeView()
+                            } .ignoresSafeArea() .frame(width: 1000, height: 1000, alignment: .center).background(Color(.white)) // white background
+                        })
                     }
                     
                     Button(action: { withAnimation { showDays.toggle() }}, label: {
@@ -75,7 +91,7 @@ struct AlarmCard: View {
                         Text(String(thu == true ? "Th" : ""))
                         Text(String(fri == true ? "F" : ""))
                         Text(String(sat == true ? "S" : ""))
-                    })
+                    }) .foregroundColor(showDays == true ? .blue : Color(#colorLiteral(red: 0.4, green: 0.4, blue: 0.4, alpha: 1)))
                     if showDays {
                         HStack {
                             Button(action: { sun.toggle() }, label: { Text("Sun") .foregroundColor(sun == true ? .black : .gray)})

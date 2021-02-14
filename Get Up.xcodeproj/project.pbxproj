@@ -17,6 +17,7 @@
 		9276BA0325D874E1006FFD8F /* AlarmEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9276BA0225D874E1006FFD8F /* AlarmEdit.swift */; };
 		9276BA0825D88404006FFD8F /* ShakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9276BA0725D88404006FFD8F /* ShakeView.swift */; };
 		9276BA0D25D89802006FFD8F /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9276BA0C25D89802006FFD8F /* Alarm.swift */; };
+		9276BA5025D8EAFE006FFD8F /* alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9276BA4F25D8EAFE006FFD8F /* alarm.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		9276BA0225D874E1006FFD8F /* AlarmEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmEdit.swift; sourceTree = "<group>"; };
 		9276BA0725D88404006FFD8F /* ShakeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeView.swift; sourceTree = "<group>"; };
 		9276BA0C25D89802006FFD8F /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
+		9276BA4F25D8EAFE006FFD8F /* alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 		9276B9B225D8421A006FFD8F /* Get Up */ = {
 			isa = PBXGroup;
 			children = (
+				9276BA4F25D8EAFE006FFD8F /* alarm.mp3 */,
 				9276B9B325D8421A006FFD8F /* Get_UpApp.swift */,
 				9276B9B525D8421A006FFD8F /* ContentView.swift */,
 				9276BA0225D874E1006FFD8F /* AlarmEdit.swift */,
@@ -247,6 +250,7 @@
 			files = (
 				9276B9BB25D8421B006FFD8F /* Preview Assets.xcassets in Resources */,
 				9276B9B825D8421B006FFD8F /* Assets.xcassets in Resources */,
+				9276BA5025D8EAFE006FFD8F /* alarm.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
