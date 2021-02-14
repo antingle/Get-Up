@@ -4,8 +4,6 @@
 ---
 [DevPost Submission](https://devpost.com/software/get-up-nbdrhz)
 ---
-![App Interface](/Design/appview.png =250x)
----
 
 ## Inspiration
 
@@ -54,6 +52,6 @@ We designed the frontend templates using Figma, then used Swift with Xcode to co
 ### All in all:
 Many of us did not have any prior experience with hackathons and group coding projects, but we were able to work off of each other’s ideas and create roles that matched each member with their strengths. We are so happy to have worked together to create something and have loved being a part of this whole experience.
 
+---
+![App Interface](/Design/appview.png)
 
-## What's next for Get Up
-We would love to continue to work on this app and expand our understanding of mobile development. Our team works super well together so we will definitely be staying in touch with each other.
