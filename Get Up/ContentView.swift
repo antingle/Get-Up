@@ -19,7 +19,6 @@ struct ContentView: View {
             ScrollView {
                 ForEach(cards) { card in
                     AlarmCard()
-                        .padding([.top, .leading, .trailing])
                         .transition(.move(edge: .bottom))
                     
                 }

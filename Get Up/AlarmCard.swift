@@ -154,11 +154,11 @@ struct AlarmCard: View {
                 .padding(.horizontal)
             }
             .padding(.horizontal)
-            .background(Color(#colorLiteral(red: 0.7490196228, green: 0.8313725591, blue: 0.8941176534, alpha: 0.8690773667)))
+            .background(alarm.isOn ? Color(#colorLiteral(red: 0.7490196228, green: 0.8313725591, blue: 0.8941176534, alpha: 0.8690773667)) : Color(#colorLiteral(red: 0.7490196228, green: 0.8313725591, blue: 0.8941176534, alpha: 0.7392124727)))
             .cornerRadius(20)
             .foregroundColor(Color(#colorLiteral(red: 0.4, green: 0.4, blue: 0.4, alpha: 1)))
             .accentColor(.black)
-        }
+        }   .padding([.top, .leading, .trailing])
     }
 }
 
