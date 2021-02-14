@@ -4,7 +4,7 @@
 ---
 [DevPost Submission](https://devpost.com/software/get-up-nbdrhz)
 ---
-![App Interface](/Design/appview.png)=250x
+![App Interface](/Design/appview.png =250x)
 ---
 
 ## Inspiration
