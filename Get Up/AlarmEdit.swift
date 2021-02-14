@@ -9,8 +9,6 @@ import SwiftUI
 
 struct AlarmEdit: View {
     
-    @Environment(\.viewController) private var viewControllerHolder: UIViewController?
-    
     @Binding var alarmIsOn:Bool
     @Binding var selectedActivity:String
     @Binding var wakeUp:Date

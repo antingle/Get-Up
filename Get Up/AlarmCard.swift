@@ -15,55 +15,69 @@ enum Activity: String, CaseIterable, Identifiable {
     var id: String { self.rawValue }
 }
 
+var triggerAlarm = false
+
 struct AlarmCard: View {
     
-    @State var alarmIsOn = true
-    @State var selectedActivity = Activity.Puzzle.rawValue
-    @State var wakeUp = Date()
-    @State var snooze = false
-    @State var currentSeconds = 3
-    @State var showDays = false
+    @State var alarm = Alarm(date: Date(), isOn: false, isSnooze: false)
+//    @Binding private var alarmIsOn:Bool what is going on
+    @State private var selectedActivity = Activity.Puzzle.rawValue
+//    @Binding private var wakeUp:Date
+    @State private var snooze = false
+    @State private var currentSeconds = 3
+    @State private var showDays = false
+    @State private var showTime = false
     
+    @State private var sun = false
+    @State private var mon = true
+    @State private var tue = true
+    @State private var wed = true
+    @State private var thu = true
+    @State private var fri = true
+    @State private var sat = false
     
-    @State var sun = false
-    @State var mon = true
-    @State var tue = true
-    @State var wed = true
-    @State var thu = true
-    @State var fri = true
-    @State var sat = false
-    
+    @State private var presentAlarm = false
     
     var body: some View {
         VStack {
             VStack {
                 HStack {
-//                    //Wakeup Time
-//                    DatePicker(
-//                        "Wakeup Time",
-//                        selection: $wakeUp,
-//                        displayedComponents: [.hourAndMinute]) .labelsHidden()
-                    //5:00 am
-                    Text(wakeUp, style: .time).font(.system(size: 48, weight: .light)).foregroundColor(Color(#colorLiteral(red: 0.4, green: 0.4, blue: 0.4, alpha: 1))).multilineTextAlignment(.center) .layoutPriority(50)
+                    Button(action: { withAnimation {showTime.toggle()} }, label: {
+                        Text(alarm.date, style: .time).font(.system(size: 48, weight: .light)).foregroundColor(Color(#colorLiteral(red: 0.4, green: 0.4, blue: 0.4, alpha: 1))).multilineTextAlignment(.center) .layoutPriority(50)
+                    })
                     
-                    Toggle("", isOn: $alarmIsOn)
+                    Toggle("", isOn: $alarm.isOn)
                         .toggleStyle(SwitchToggleStyle(tint: Color("ToggleColor")))
                 }
                 .padding([.top, .leading, .trailing])
                 VStack {
                     
-                    Button(action: { withAnimation { showDays.toggle() } }, label: {
-                        Text("M, T, W, Th, F")
+                    if showTime {
+                    DatePicker(
+                        "Wakeup Time",
+                        selection: $alarm.date,
+                        displayedComponents: [.hourAndMinute]).datePickerStyle(WheelDatePickerStyle()) .labelsHidden()
+                        .transition(.scale)
+                    }
+                    
+                    Button(action: { withAnimation { showDays.toggle() }}, label: {
+                        Text(String(sun == true ? "S" : ""))
+                        Text(String(mon == true ? "M" : ""))
+                        Text(String(tue == true ? "T" : ""))
+                        Text(String(wed == true ? "W" : ""))
+                        Text(String(thu == true ? "Th" : ""))
+                        Text(String(fri == true ? "F" : ""))
+                        Text(String(sat == true ? "S" : ""))
                     })
                     if showDays {
                         HStack {
-                            Button(action: { sun.toggle() }, label: { Text("Sun") })
-                            Button(action: { mon.toggle() }, label: { Text("Mon") })
-                            Button(action: { tue.toggle() }, label: { Text("Tue") })
-                            Button(action: { wed.toggle() }, label: { Text("Wed") })
-                            Button(action: { thu.toggle() }, label: { Text("Thu") })
-                            Button(action: { fri.toggle() }, label: { Text("Fri") })
-                            Button(action: { sat.toggle() }, label: { Text("Sat") })
+                            Button(action: { sun.toggle() }, label: { Text("Sun") .foregroundColor(sun == true ? .black : .gray)})
+                            Button(action: { mon.toggle() }, label: { Text("Mon") .foregroundColor(mon == true ? .black : .gray)})
+                            Button(action: { tue.toggle() }, label: { Text("Tue") .foregroundColor(tue == true ? .black : .gray)})
+                            Button(action: { wed.toggle() }, label: { Text("Wed") .foregroundColor(wed == true ? .black : .gray)})
+                            Button(action: { thu.toggle() }, label: { Text("Thu") .foregroundColor(thu == true ? .black : .gray)})
+                            Button(action: { fri.toggle() }, label: { Text("Fri") .foregroundColor(fri == true ? .black : .gray)})
+                            Button(action: { sat.toggle() }, label: { Text("Sat") .foregroundColor(sat == true ? .black : .gray)})
                         }     .padding([.top, .bottom])
                     }
                     
@@ -121,6 +135,12 @@ struct AlarmCard: View {
             .cornerRadius(20)
             .foregroundColor(Color(#colorLiteral(red: 0.4, green: 0.4, blue: 0.4, alpha: 1)))
             .accentColor(.black)
+        }
+        
+        if now == alarm.date && alarm.isOn {
+            sheet(isPresented: $presentAlarm, content: {
+                ShakeView()
+            })
         }
     }
 }
