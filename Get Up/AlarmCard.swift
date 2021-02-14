@@ -20,6 +20,7 @@ var triggerAlarm = false
 struct AlarmCard: View {
     
     @State var alarm = Alarm(date: Date(), isOn: false, isSnooze: false)
+    @State var alarm1:Alarm?
 //    @Binding private var alarmIsOn:Bool what is going on
     @State private var selectedActivity = Activity.Puzzle.rawValue
 //    @Binding private var wakeUp:Date
@@ -48,6 +49,12 @@ struct AlarmCard: View {
                     
                     Toggle("", isOn: $alarm.isOn)
                         .toggleStyle(SwitchToggleStyle(tint: Color("ToggleColor")))
+                        .fullScreenCover(isPresented: $alarm.isOn, content: {
+                            VStack {
+                            Text(alarm.date, style: .time).font(.system(size: 72, weight: .regular)).foregroundColor(Color(#colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1))).multilineTextAlignment(.center)
+                            ShakeView()
+                            } .ignoresSafeArea() .frame(width: 1000, height: 1000, alignment: .center).background(Color(.white)) // white background
+                        })
                 }
                 .padding([.top, .leading, .trailing])
                 VStack {
@@ -135,12 +142,6 @@ struct AlarmCard: View {
             .cornerRadius(20)
             .foregroundColor(Color(#colorLiteral(red: 0.4, green: 0.4, blue: 0.4, alpha: 1)))
             .accentColor(.black)
-        }
-        
-        if now == alarm.date && alarm.isOn {
-            sheet(isPresented: $presentAlarm, content: {
-                ShakeView()
-            })
         }
     }
 }
