@@ -4,6 +4,7 @@
 ---
 [DevPost Submission](https://devpost.com/software/get-up-nbdrhz)
 ---
+![App Interface](/Design/appview.png)
 
 ## Inspiration
 
