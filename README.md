@@ -1,7 +1,9 @@
-#Get Up
+# Get Up
 
-[Demo](https://youtu.be/FaOypW7q9Fc)
+[Demo Video](https://youtu.be/FaOypW7q9Fc)
+---
 [DevPost Submission](https://devpost.com/software/get-up-nbdrhz)
+---
 
 ## Inspiration
 
